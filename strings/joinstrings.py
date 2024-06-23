@@ -13,7 +13,7 @@ def concatenate(a, b):
 
 N = int(input())
 string_lists = [None] * N
-string_lists_end = [None] * N
+string_lists_end = [None] * N # Store the end of each string
 
 # Gather the strings
 for i in range(N):

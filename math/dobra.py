@@ -37,7 +37,7 @@ def helper(word, vowels_used, consonants_used):
         total_combinations = pow(5, vowels_used) * (pow(21, consonants_used) - pow(20, consonants_used))
         return total_combinations
         
-    index = word.find('_')
+    index = word.find('_') # location of the first underscore
     
     res += helper(word[:index] + 'v' + word[index + 1:], vowels_used + 1, consonants_used) # Fill in with a v
     res += helper(word[:index] + 'c' + word[index + 1:], vowels_used, consonants_used + 1) # Fill in with a c
@@ -57,7 +57,7 @@ def helper_with_l(word, vowels_used, consonants_used):
         total_combinations = pow(5, vowels_used) * pow(21, consonants_used)
         return total_combinations
         
-    index = word.find('_')
+    index = word.find('_') # location of the first underscore
     
     res += helper_with_l(word[:index] + 'v' + word[index + 1:], vowels_used + 1, consonants_used) # Fill in with a v
     res += helper_with_l(word[:index] + 'c' + word[index + 1:], vowels_used, consonants_used + 1) # Fill in with a c
