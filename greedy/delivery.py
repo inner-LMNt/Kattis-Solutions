@@ -19,9 +19,9 @@ def solve(post_office):
 
     while N >= 0:
         carrying = capacity
-        dest = post_office[N][0]
+        dest = post_office[N][0] # greedy approach is to deliver to the farthest post office first
         delivery = post_office[N][1]
-        distance += dest * 2
+        distance += dest * 2 # back and forth
 
         if carrying < delivery: # Drop off as many letters as possible
             post_office[N][1] -= carrying
@@ -29,7 +29,7 @@ def solve(post_office):
         elif carrying == delivery: # Drop off all letters and finish the current trip
             N -= 1
             continue
-        else: # carrying > delivery, so we can drop off letters while heading back
+        else: # `carrying` > `delivery`, so we can drop off letters while heading back
             carrying -= delivery
             N -= 1
 
@@ -45,7 +45,7 @@ def solve(post_office):
                 elif carrying == delivery: # Drop off all letters and finish the current trip
                     N -= 1
                     break
-                else: # carrying > delivery, so we can drop off letters while heading back
+                else: # `carrying` > `delivery`, so we can drop off letters while heading back
                     carrying -= delivery
                     N -= 1
 
