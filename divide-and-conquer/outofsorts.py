@@ -28,7 +28,7 @@ result = 0
 middle_index = (n - 1) // 2
 
 for i in range(0, middle_index):
-    if sequence[i] > sequence[middle_index]: # Cannot be found with binary search since it is too large
+    if sequence[i] > sequence[middle_index]: # Cannot be found; too large
         continue
     else:
         if binary_searchable(0, middle_index - 1, sequence[i]):
@@ -37,7 +37,7 @@ for i in range(0, middle_index):
 result += 1 # Middle element is always binary searchable
 
 for i in range(middle_index + 1, n):
-    if sequence[i] < sequence[middle_index]: # Cannot be found with binary search since it is too small
+    if sequence[i] < sequence[middle_index]: # Cannot be found; too small
         continue
     else:
         if binary_searchable(middle_index + 1, n - 1, sequence[i]):
