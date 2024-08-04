@@ -32,4 +32,4 @@ for _ in range(test_cases):
         else:
             lower_distance = distance + 1
 
-    print(lower_distance / 2) # divide by 2 since distance to edge is half of diameter
+    print(lower_distance / 2) # distance to edge (a house) is half of diameter
