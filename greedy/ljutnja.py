@@ -1,3 +1,40 @@
+def ljutnja_greedy():
+    candies, n = map(int, input().split())
+
+    children = []
+    for i in range(n):
+        children.append(int(input()))
+
+    children.sort(reverse=True) # most greedy children first
+
+    index = 0
+    height = children[0]
+
+    # Because anger levels are squared, we want to distribute as evenly as possible
+    # Think of distributing by layer, cutting slices off the top of a pyramid of values
+    while candies > 0:
+        while index < n and children[index] == height: # find next layer width
+            index += 1
+
+        if candies < index: # not enough for full layer
+            break
+
+        candies -= index
+        height -= 1
+        
+    for i in range(index): # take slicings into effect
+        children[i] = height
+
+    for i in range(candies): # distribute remaining candies
+        children[i] -= 1
+
+    sum_of_squares = 0
+    for i in range(n):
+        sum_of_squares += children[i] * children[i]
+
+    print(sum_of_squares)
+
+
 def ljutnja_binary_search():
     candies, n = map(int, input().split())
 
@@ -55,47 +92,10 @@ def ljutnja_binary_search():
     print(sum_of_squares)
 
 
-def ljutnja_greedy():
-    candies, n = map(int, input().split())
-
-    children = []
-    for i in range(n):
-        children.append(int(input()))
-
-    children.sort(reverse=True) # most greedy children first
-
-    index = 0
-    height = children[0]
-
-    # Because anger levels are squared, we want to distribute as evenly as possible
-    # Think of distributing by layer, cutting slices off the top of a pyramid of values
-    while candies > 0:
-        while index < n and children[index] == height: # find next layer width
-            index += 1
-
-        if candies < index: # not enough for full layer
-            break
-
-        candies -= index
-        height -= 1
-        
-    for i in range(index): # take slicings into effect
-        children[i] = height
-
-    for i in range(candies): # distribute remaining candies
-        children[i] -= 1
-
-    sum_of_squares = 0
-    for i in range(n):
-        sum_of_squares += children[i] * children[i]
-
-    print(sum_of_squares)
-
-
 from random import randint
 
 # Either solution works
 if randint(0, 1) == 0:
-    ljutnja_binary_search()
-else:
     ljutnja_greedy()
+else:
+    ljutnja_binary_search()

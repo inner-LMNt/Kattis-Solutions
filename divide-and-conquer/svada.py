@@ -38,12 +38,12 @@ while lower_time < upper_time:
         break
 
 result = 0
-excess = 1000000000
+excess = 10000000000 # worst case
 mid_time = (lower_time + upper_time) // 2
 
-# After breaking from BSTA, check `mid_time-1` and `mid_time`
-# This is because using `mid_time` can sometimes result in too many net coconuts
-for i in range(mid_time - 1, mid_time + 1):
+# After breaking from BSTA, check `mid_time - 1` and `mid_time`
+# This is because using just `mid_time` can sometimes result in too many coconuts
+for i in [mid_time - 1, mid_time]:
     A_time = i
     B_time = time - i
     coconuts = 0
