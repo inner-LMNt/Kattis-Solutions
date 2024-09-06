@@ -10,8 +10,7 @@ for _ in range(test_cases):
     prefix_mod = defaultdict(int) # frequency of each prefix sum modulo divisor
     for i in range(length):
         running_mod_sum = (running_mod_sum + numbers[i]) % divisor
-        remainder = running_mod_sum
-        prefix_mod[remainder] += 1
+        prefix_mod[running_mod_sum] += 1
 
     result = 0
 
